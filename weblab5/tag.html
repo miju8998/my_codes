@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>getElementsByTagName Example</title>
+</head>
+<body>
+
+    <p>This is a paragraph.</p>
+    <p>This is another paragraph.</p>
+    <button id="changeParagraphText">Change Paragraph Text</button>
+
+    <script>
+        // Access all <p> tags
+        const paragraphs = document.getElementsByTagName('p');
+        const button = document.getElementById('changeParagraphText');
+
+        // Change text of all paragraphs when the button is clicked
+        button.addEventListener('click', function() {
+            for (let i = 0; i < paragraphs.length; i++) {
+                paragraphs[i].textContent = 'This paragraph has been changed!';
+            }
+        });
+    </script>
+
+</body>
+</html>

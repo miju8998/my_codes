@@ -1,0 +1,26 @@
+function swap_adjacent_digits(n) {
+    // toog sondgoig shalgah
+    if (n.toString().length % 2 != 0) { //toog string bolgoj sondgoi/tegsh orontoig shalgana
+        return false;
+    }
+    var result = 0,
+        x = 1;
+    // toog 0 boltol davtana 
+    while (n != 0) {
+        // toonii suuliin orong (dg1) mun suuliin orongiin umnuhiig avah (dg2)
+        var dg1 = n % 10,
+            dg2 = ((n - dg1) / 10) % 10;
+        // dg1 dg2 iig solih, zuv bairlalaar result-d nemne
+        result += x * (10 * dg1 + dg2);
+        // toonii suuliin 2 orong hasna
+        n = Math.floor(n / 100);
+        // urjuulegch x-iig 100-r nemegduulne
+        x *= 100;
+    }
+    return result; // zeregtsee toonuudiig solison toog butsaana
+}
+
+console.log(swap_adjacent_digits(32));  
+console.log(swap_adjacent_digits(2837));  
+console.log(swap_adjacent_digits(98174));  
+console.log(swap_adjacent_digits(849320)); 

@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Миний хобби</title>
+  <style>
+    /* Niit style: buh elementiin zaig hyzgaarlaj, gadna bolon dotor zaig arilgana */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: Arial, sans-serif;
+      height: 100vh; /* Delgetsiin undriin hemjeend tohiruulna */
+      overflow: hidden; /* huudasnii overflow iig haana */
+    }
+
+    /* Tolgoi hesgiin design */
+    .section-1 {
+      background-color: #8af3f3;
+      padding: 20px; 
+      text-align: center; 
+      height: 80px;
+    }
+
+    .section-1 a {
+      margin: 0 20px; /* button hoorondiin zai */
+      padding: 10px 20px;
+      text-decoration: none; /* Dooguur zuraas arilgah */
+      color: black;
+      font-size: 16px;
+      background-color: lightgray;
+      border: 1px solid #888;
+      border-radius: 5px; /* bulanguudiig dugui bolgoh */
+    }
+
+    .section-1 a:hover {
+      background-color: gray; /* hoveriin ungu */
+      color: white; /* hover uyd text tsagaan bolno */
+    }
+
+    /* Container iin niit zohion baiguulaltiig tohiruulna */
+    .container {
+      display: flex; /* Elementiig zeregtsuulen bairluulna */
+      height: calc(100vh - 140px); /* Tolgoi bolon huliin hesgiin undriig hasaad, uldsen hesgiin undur */
+    }
+
+    /* medeelel aguulah hesgiin design */
+    .section-2 {
+      width: 25%;
+      background-color: white;
+      padding: 20px;
+      border-right: 2px solid black;
+      overflow-y: auto; /* Dotood aguulgaas ih bol scrollbar gargah  */
+    }
+
+    .section-2 img {
+      width: 100%; /* zurgiig talbart buren bagtaah */
+      margin-bottom: 20px;
+      border: 2px solid black;
+    }
+
+    .section-2 p {
+      margin: 5px 0; /* deed bolon dood tald zai uldeene */
+    }
+
+    /*content hesgiin design */
+    .section-3 {
+      width: 75%; /* niit talbariin 3/4 heseg */
+      padding: 20px;
+      background-color: #f0f0f0;
+      display: flex; /* design zohion baiguulaltad flex ashiglah */
+      flex-direction: column; /* Elementiig bosoo daraallaar bairluulah */
+      align-items: center; /* elementiig tuvd bairluulah */
+      justify-content: center; /* elementiig undriin daguu tuvluruuleh */
+      overflow: auto; /* dotood contentiig scrollbar ashiglan uzeh */
+    }
+
+    /* Aguulga hesgiin dotor haruulah zuils */
+    .content {
+      display: none; /* Undsen uyd content(zurag, bichleg, map) uzuulehgui */
+      text-align: center;
+      width: 100%;
+      overflow-y: auto; /* undriin huvid scrollbar oruulna */
+    }
+
+    /* Zurgiin hesgiin zurgiin style */
+    .photos-section img {
+      width: 70%; /* Zurag 70%-aar haragduulna */
+      margin-right: 4%; /* Zurguudiin hoorond zai oruulna */
+      margin-bottom: 10px; /* Zurguudiin doorhi zai oruulna */
+    }
+
+    /* Video hesgiin iframe style */
+    .videos-section iframe {
+      width: 100%;
+      height: 70vh;
+      margin-bottom: 10px;
+    }
+
+    /* Map hesgiin iframe style */
+    #map-section iframe {
+      width: 100%; /* Gazryn zurag buh urgunii talaar haragdana */
+      height: 70vh; /* Ondruudeer ni haruulna */
+      border: 0; /* Hyzgaar zaig arilgana */
+    }
+
+    /* 4 dahi hesgiin style-iig zohitsuulna */
+    .section-4 {
+      background-color: #f97b7b;
+      padding: 10px;
+      text-align: center;
+      height: 60px;
+      border-top: 2px solid black; /* Deerh hyzgaar zuraas oruulna */
+    }
+  </style>
+</head>
+<body>
+  <div class="section-1">
+    <a href="address.html" target="fnme" id="homeBtn">Нүүр хуудас</a>
+    <a href="#" id="photosBtn">Зурагнууд</a>
+    <a href="#" id="videosBtn">Бичлэгнүүд</a>
+    <a href="#" id="mapBtn">Газрын зураг</a>
+  </div>
+
+  <!-- Gol container: medeelel bolon aguulga hesgiin erunhii -->
+  <div class="container">
+
+    <div class="section-2">
+      <img src="C:/Users/97699/Downloads/propic.jpg" alt="Profile zurag">
+      <p><strong>Хувийн мэдээлэл:</strong></p>
+      <p>Овог: Мөнхбат</p>
+      <p>Нэр: Мөнхжаргал</p>
+      <p>Хүйс: Эр</p>
+      <p>Регистрийн дугаар: ПЮ06212717</p>
+      <p>Төрсөн газар: Ховд, Жаргалант</p>
+      <p>Нас: 18</p>
+    </div>
+    <!-- Aguulga -->
+    <div class="section-3">
+        <iframe src="" name="fnme" frameborder="0"></iframe>
+        <div id="home-section" class="content">
+          <h2>Агуулга</h2>
+        </div>
+  
+        <div id="photos-section" class="content photos-section">
+          <img src="https://i.pinimg.com/originals/07/b9/7c/07b97c195ed2ff480b29521778a6564f.jpg" alt="zurag 1">
+          <img src="https://i.pinimg.com/564x/24/f1/78/24f1788609489dec1c39cdc58d1a5dba.jpg" alt="zurag 2">
+        </div>
+  
+        <div id="videos-section" class="content videos-section">
+          <iframe src="C:\Users\97699\Downloads\Phone Link\lv_0_20241028221031.mp4" title="bichleg 1"></iframe>
+          <iframe src="C:\Users\97699\Downloads\Phone Link\20240523_103924.mp4" title="bichleg 2"></iframe>
+        </div>
+  
+        <div id="map-section" class="content">
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d309.46307537942045!2d106.9309512860505!3d47.918813843896075!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5d9693e4925e7375%3A0xb1ff61e95c6f21d3!2z0JDQuSDTqNKvINCY0L3RgdGC0LjRgtGD0YIgLyBJTyBJbnN0aXR1dGU!5e0!3m2!1sen!2smn!4v1731437096059!5m2!1sen!2smn" 
+            allowfullscreen="" loading="lazy"></iframe>
+        </div>
+      </div>
+    </div> <!-- Container tugsgul -->
+  
+    <div class="section-4">
+      <p>Darkhan-Uul, Darkhan, 8-r bag **-r khoroolol, ** bair ** toot</p>
+    </div>
+  
+    <!-- JavaScript heseg: Content-uudiig tovchluuruud deer hiih -->
+    <script>
+      // Bukh button bolon content hesguudiig avna
+      const homeBtn = document.getElementById('homeBtn');
+      const photosBtn = document.getElementById('photosBtn');
+      const videosBtn = document.getElementById('videosBtn');
+      const mapBtn = document.getElementById('mapBtn');
+  
+      const homeSection = document.getElementById('home-section');
+      const photosSection = document.getElementById('photos-section');
+      const videosSection = document.getElementById('videos-section');
+      const mapSection = document.getElementById('map-section');
+  
+      // Bugdiig undsen baidald nuuh function
+      const hideAllSections = () => {
+        homeSection.style.display = 'none';
+        photosSection.style.display = 'none';
+        videosSection.style.display = 'none';
+        mapSection.style.display = 'none';
+      };
+  
+      // Tovchluur bolon tabuud harah functionuud
+      homeBtn.addEventListener('click', () => {
+        hideAllSections();
+        homeSection.style.display = 'block';
+      });
+  
+      photosBtn.addEventListener('click', () => {
+        hideAllSections();
+        photosSection.style.display = 'block';
+      });
+  
+      videosBtn.addEventListener('click', () => {
+        hideAllSections();
+        videosSection.style.display = 'block';
+      });
+  
+      mapBtn.addEventListener('click', () => {
+        hideAllSections();
+        mapSection.style.display = 'block';
+      });
+  
+      // Default harah heseg
+      window.onload = () => {
+        hideAllSections();
+        homeSection.style.display = 'block';
+      };
+    </script>
+  </body>
+  </html>

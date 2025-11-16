@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>innerText Example</title>
+    <style>
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <h1 id="header">Hello, World!</h1>
+    <p id="paragraph">This is a <span class="hidden">hidden</span> text.</p>
+    <button id="changeTextButton">Change Text</button>
+
+    <script>
+        const header = document.getElementById('header');
+        const paragraph = document.getElementById('paragraph');
+        const button = document.getElementById('changeTextButton');
+
+        // Using innerText to change the text
+        button.addEventListener('click', function() {
+            header.innerText = 'Text has been changed!';
+            paragraph.innerText = 'This is visible text without hidden elements.';
+        });
+
+        // Using innerText to get the text
+        console.log(paragraph.innerText);  // Outputs only visible text
+    </script>
+
+</body>
+</html>

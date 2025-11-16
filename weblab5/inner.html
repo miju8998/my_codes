@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Change HTML Content Example</title>
+</head>
+<body>
+
+    <div id="content">
+        <p>This is a <strong>paragraph</strong> with some <em>HTML</em> content.</p>
+    </div>
+    <button id="changeHTMLButton">Change HTML Content</button>
+
+    <script>
+        const content = document.getElementById('content');
+        const changeHTMLButton = document.getElementById('changeHTMLButton');
+
+        changeHTMLButton.addEventListener('click', function() {
+            content.innerHTML = '<p><strong>New HTML content</strong> has been added!</p>';
+        });
+    </script>
+
+</body>
+</html>

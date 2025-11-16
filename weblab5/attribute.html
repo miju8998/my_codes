@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Access and Modify Attributes</title>
+</head>
+<body>
+
+    <a id="link" href="https://www.example.com" target="_blank">Visit Example</a>
+    <img id="image" src="C:\Users\97699\Pictures\Nitro\Nitro_Wallpaper_5000x2813.jpg" alt="Placeholder Image">
+    <button id="changeLinkButton">Change Link</button>
+    <button id="changeImageButton">Change Image</button>
+
+    <script>
+        const link = document.getElementById('link');
+        const image = document.getElementById('image');
+        const changeLinkButton = document.getElementById('changeLinkButton');
+        const changeImageButton = document.getElementById('changeImageButton');
+
+        // Accessing the 'href' attribute of the link
+        console.log(link.href);  // Prints the current URL
+
+        // Accessing the 'src' attribute of the image
+        console.log(image.src);  // Prints the current image source
+
+        // Modifying the 'href' attribute of the link
+        changeLinkButton.addEventListener('click', function() {
+            link.href = 'https://www.newexample.com';  // Change the link URL
+            link.textContent = 'Visit New Example';  // Change the text of the link
+        });
+
+        // Modifying the 'src' and 'alt' attributes of the image
+        changeImageButton.addEventListener('click', function() {
+            image.src = 'https://img.freepik.com/free-photo/painting-mountain-lake-with-mountain-background_188544-9126.jpg?t=st=1732701143~exp=1732704743~hmac=663c77f76abb8d347781a698fd565ef0b5b5b067a0f5a9f436b2790b5b7b1c6c&w=1060';  // Change the image source
+            image.alt = 'New Placeholder Image';  // Change the alt text
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mori uralduulah</title>
+  <link href="C:\Users\97699\.vscode\bootstrap.css" rel="stylesheet">
+  <style>
+    .game-container { text-align: center; padding: 40px; }
+    .track { position: relative; width: 80%; height: 200px; margin: 40px auto; border-top: 4px solid black; }
+    .player { position: relative; margin: 80px 0; }
+    .horse { position: absolute; height: 100px; left: 0; }
+    .finish-line { position: absolute; right: 0; top: 0; width: 10px; height: 160%; background: repeating-linear-gradient(to bottom, black 0, black 5px, white 5px, white 10px); }
+    .dice-container { display: flex; justify-content: center; gap: 20px; }
+    .dice-img { width: 100px; height: 100px; }
+    .restart-button { margin-top: 80px; }
+  </style>
+</head>
+<body>
+  <!-- Togloomiin undsen container -->
+  <div class="game-container">
+    <!-- Shagainii zurgiig haruulah container -->
+    <div class="mb-4 dice-container">
+      <img id="dice1" class="dice-img" src="file:///C:/Users/97699/Downloads/morishagai.jpg" alt="Dice 1">
+      <img id="dice2" class="dice-img" src="file:///C:/Users/97699/Downloads/morishagai.jpg" alt="Dice 2">
+      <img id="dice3" class="dice-img" src="file:///C:/Users/97699/Downloads/morishagai.jpg" alt="Dice 3">
+      <img id="dice4" class="dice-img" src="file:///C:/Users/97699/Downloads/morishagai.jpg" alt="Dice 4">
+    </div>
+    <!-- Shagai hayh tovch -->
+    <button id="roll-button" class="btn btn-primary mb-3">Hayah</button>
+    <!-- Zam bolon toglogchdiin dursiig haruulah heseg -->
+    <div class="track">
+      <div class="player">
+        <span>Toglogch 1</span>
+        <img id="horse1" class="horse" src="https://static.wikia.nocookie.net/characterprofile/images/2/25/Applejack_vector.png/revision/latest?cb=20160105164116" alt="Horse 1">
+      </div>
+      <div class="player">
+        <span>Toglogch 2</span>
+        <img id="horse2" class="horse" src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/i/306e00ca-c2d1-45c3-b346-8f6cbd5e3be6/d7qxal2-7ef0aed7-c45e-45e4-83ab-8dc1d17fc0a4.png" alt="Horse 2">
+      </div>
+      <div class="finish-line"></div>
+    </div>
+    <button id="restart-button" class="btn btn-danger restart-button">Dahin ehleh</button>
+  </div>
+  <div class="modal fade" id="winner-modal" tabindex="-1" aria-labelledby="winner-modal-label" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="winner-modal-label">Uraldaan duuslaa!</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p id="winner-text"></p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="C:\Users\97699\.vscode\bootstrap.js"></script>
+  <script>
+    // Odoogiin toglogchiig hadgalah huvisagch (1-r toglogch ehelne)
+    let currentPlayer = 1;
+
+    // DOM elementuudiig hadgalah
+    const diceElements = [document.getElementById("dice1"), document.getElementById("dice2"), document.getElementById("dice3"), document.getElementById("dice4")];
+    const horse1 = document.getElementById("horse1"); // 1-r toglogchiin mori
+    const horse2 = document.getElementById("horse2"); // 2-r toglogchiin mori
+    const rollButton = document.getElementById("roll-button"); // Hayah tovch
+    const restartButton = document.getElementById("restart-button"); // Dahin ehleh tovch
+    const winnerText = document.getElementById("winner-text"); // ylagchiig haruulah text
+
+    //pixeleer zamiin urguniig tohiruulah
+    const trackWidth = 1150;
+
+    // shagai hayah function
+    function rollDice() {
+      // 1ees 4 hurtelh sanamsargui too uusgene (shagai hayhtai adil)
+      return Math.floor(Math.random() * 4) + 1;
+    }
+
+    // Mori hudulguh function
+    function moveHorse(horse, steps) {
+      // Morinii odoogiin urguniig todorhoilno
+      const horseWidth = horse.offsetWidth;
+      // Mori zam deer heden alham uragshlahiig todorhoilno
+      const moveDistance = (trackWidth / 10) * steps;
+      // Mori odoo haana bairlaj baigaag avch uzne
+      const currentLeft = parseInt(horse.style.left || "0", 10);
+      // Shine bairlaliig tootsoolno
+      const newLeft = currentLeft + moveDistance;
+      // Moriig shine bairlald shiljuulne
+      horse.style.left = `${newLeft}px`;
+
+      // Mori davaanii shugamiig (morinii urgun orson) davsan esehiig shalgana
+      return newLeft + horseWidth >= trackWidth;
+    }
+
+    // Shagain zurguudiig shinechleh function
+    function updateDiceImages(rolls) {
+      // Shagain zurguudiin link hadgalah
+      const diceImages = [
+        "file:///C:/Users/97699/Downloads/morishagai.jpg", // 1-n shagai
+        "file:///C:/Users/97699/Downloads/shagai2.jpg",   // 2-n
+        "file:///C:/Users/97699/Downloads/shagai3.jpg",   // 3-n
+        "file:///C:/Users/97699/Downloads/shagai4.jpg"    // 4-n
+      ];
+      // Shagain ur dung ashiglan zurguudiig shinechlene
+      rolls.forEach((roll, index) => {
+        diceElements[index].src = diceImages[roll - 1]; // Tuhain shagain ur duntei tohiroh zurgiig oruulna
+      });
+    }
+
+    // Shagai hayh uyd boloh uildgluudiig hariutsah function
+    function handleRoll() {
+      // 4 shagaig hayj, tus buriin ur dung hadgalna
+      const rolls = [rollDice(), rollDice(), rollDice(), rollDice()];
+      // ur dun 1 hed garsniig toolno
+      let countOnes = rolls.filter(roll => roll === 1).length;
+
+      // Shagain zurguudiig shinechlene
+      updateDiceImages(rolls);
+
+      // Odoogiin toglogchiin moriig todorhoilno
+      const horse = currentPlayer === 1 ? horse1 : horse2;
+      // Moriig hudulgunu, hervee barianii shugamiig davbal ylagchiig haruulna
+      if (moveHorse(horse, countOnes)) {
+        showWinner(currentPlayer); // Ylagchiin haruulah function duudna
+        return; // uildliig duusgana
+      }
+
+      // Toglogchiig daraagiin toglogch ruu shiljuulne
+      currentPlayer = currentPlayer === 1 ? 2 : 1;
+    }
+
+    // Ylagchiig haruulah function
+    function showWinner(player) {
+      // Ylagchiin textiig shinechlene
+      winnerText.textContent = `Toglogch ${player} hojloo!`;
+      // Bootstrap-n modal haruulna
+      const modal = new bootstrap.Modal(document.getElementById("winner-modal"));
+      modal.show(); // modal haruulna
+      // Shagai hayah tovchiig idevhgui bolgono
+      rollButton.disabled = true;
+    }
+
+    // Togloomiig dahin ehluuleh function
+    function restartGame() {
+      // Toglogchiig 1-r toglogchoor dahin ehluulne
+      currentPlayer = 1;
+      // Morinuudiin bairiig ehleh tsegt ni tavina
+      horse1.style.left = "0px";
+      horse2.style.left = "0px";
+      // Shagain zurguudiig anhnii baidald ni oruulna
+      diceElements.forEach(dice => (dice.src = "file:///C:/Users/97699/Downloads/morishagai.jpg"));
+      // Shagai hayah tovchiig idevhtei bolgono
+      rollButton.disabled = false;
+    }
+
+    // Shagai hayh tovchluur deer darahad `handleRoll` functiong duudna
+    rollButton.addEventListener("click", handleRoll);
+    // Dahin ehluuleh tovch deer darahad `restartGame`functiong duudna
+    restartButton.addEventListener("click", restartGame);
+  </script>
+
+</body>
+</html>

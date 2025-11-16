@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>getElementsByClassName Example</title>
+</head>
+<body>
+
+    <div class="box">Box 1</div>
+    <div class="box">Box 2</div>
+    <div class="box">Box 3</div>
+    <button id="changeBoxes">Change Box Text</button>
+
+    <script>
+        // Access all elements with class 'box'
+        const boxes = document.getElementsByClassName('box');
+        const button = document.getElementById('changeBoxes');
+
+        // Change text of all elements with class 'box'
+        button.addEventListener('click', function() {
+            for (let i = 0; i < boxes.length; i++) {
+                boxes[i].textContent = 'Box has been changed!';
+            }
+        });
+    </script>
+
+</body>
+</html>

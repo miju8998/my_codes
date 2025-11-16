@@ -1,0 +1,117 @@
+{
+	"name": "code-explainer",
+	"displayName": "Code Explainer",
+	"description": "Explains every bit of code inside your editor",
+	"version": "1.0.2",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/Sadeedpv/codeExplainer"
+	},
+	"license": "MIT",
+	"publisher": "Sadeedpv",
+	"engines": {
+		"vscode": "^1.81.0"
+	},
+	"categories": [
+		"Other"
+	],
+	"main": "./extension.js",
+	"icon": "assets/code-explainer-logo-ext.png",
+	"activationEvents": [
+		"onCommand:code-explainer.hello-world",
+		"onCommand:code-explainer.explain",
+		"onLanguage",
+		"onView:code-explainer"
+	],
+	"contributes": {
+		"viewsContainers": {
+			"activitybar": [
+				{
+					"id": "code-explainer",
+					"title": "Code Explainer",
+					"icon": "assets/code-explainer-logo.svg"
+				}
+			]
+		},
+		"views": {
+			"code-explainer": [
+				{
+					"id": "code-explainer",
+					"name": "Code Explainer",
+					"type": "webview",
+					"icon": "assets/code-explainer-logo.svg",
+					"contextualTitle": "CodeExplainer"
+				}
+			]
+		},
+		"commands": [
+			{
+				"command": "code-explainer.hello-world",
+				"category": "CodeExplainer",
+				"title": "Hello World!"
+			},
+			{
+				"command": "code-explainer.explain",
+				"category": "CodeExplainer",
+				"title": "Explain"
+			}
+		],
+		"configuration": [
+			{
+				"type": "object",
+				"title": "code-explainer",
+				"properties": {
+					"code-explainer.apiKey": {
+						"type": "string",
+						"default": "",
+						"description": "OPENAI API Key"
+					},
+					"code-explainer.hover": {
+						"type": "boolean",
+						"default": false,
+						"description": "Show Explanation on Hover (Beta)"
+					}
+				}
+			}
+		]
+	},
+	"scripts": {
+		"lint": "eslint .",
+		"pretest": "npm run lint",
+		"test": "node ./test/runTest.js",
+		"vscode:prepublish": "npm run esbuild-base -- --minify",
+		"esbuild-base": "esbuild ./extension.js --bundle --outfile=out/main.js --external:vscode --format=cjs --platform=node",
+		"esbuild": "npm run esbuild-base -- --sourcemap",
+		"esbuild-watch": "npm run esbuild-base -- --sourcemap --watch",
+		"test-compile": "tsc -p ./"
+	},
+	"devDependencies": {
+		"@types/glob": "^8.1.0",
+		"@types/mocha": "^10.0.1",
+		"@types/node": "20.2.5",
+		"@types/vscode": "^1.81.0",
+		"@vscode/test-electron": "^2.3.2",
+		"esbuild": "^0.19.2",
+		"eslint": "^8.41.0",
+		"glob": "^8.1.0",
+		"mocha": "^10.2.0",
+		"typescript": "^5.1.3"
+	},
+	"dependencies": {
+		"markdown-it": "^13.0.1",
+		"openai": "^3.3.0"
+	},
+	"__metadata": {
+		"id": "94f07a07-cadd-48b4-ad19-4446ac1fab7a",
+		"publisherId": "a09eb2ff-0981-47c9-90f8-cbf83d0141d9",
+		"publisherDisplayName": "Sadeed PV",
+		"targetPlatform": "undefined",
+		"isApplicationScoped": false,
+		"isPreReleaseVersion": false,
+		"hasPreReleaseVersion": false,
+		"installedTimestamp": 1728709433633,
+		"pinned": false,
+		"preRelease": false,
+		"source": "gallery"
+	}
+}

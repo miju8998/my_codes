@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>getElementById Example</title>
+</head>
+<body>
+
+    <h1 id="heading">Welcome to the DOM Example!</h1>
+    <button id="changeTextButton">Change Text</button>
+
+    <script>
+        // Access element by ID
+        const heading = document.getElementById('heading');
+        const button = document.getElementById('changeTextButton');
+
+        // Change text when button is clicked
+        button.addEventListener('click', function() {
+            heading.textContent = 'Text has been changed!';
+        });
+    </script>
+
+</body>
+</html>
+

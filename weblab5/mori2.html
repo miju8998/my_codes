@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>2 Player Game</title>
+  <link href="C:\Users\97699\.vscode\bootstrap.css" rel="stylesheet">
+  <style>
+    .track { position: relative; width: 100%; height: 80px; margin: 20px 0; border: 1px solid black; }
+    .horse { position: absolute; height: 50px; top: 15px; }
+    .finish-line { position: absolute; right: 0; top: 0; height: 100%; width: 5px; background: black; }
+    .modal { display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background: white; border: 2px solid black; padding: 20px; z-index: 10; }
+    .backdrop { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.5); z-index: 9; }
+  </style>
+</head>
+<body class="text-center">
+
+<div class="container mt-4">
+  <div id="dice-display" class="mb-3">dice dice dice dice</div>
+  <button id="roll-button" class="btn btn-primary mb-3">ROLL</button>
+  
+  <div class="track">
+    <span class="position-absolute" style="left: 10px;">Player 1</span>
+    <img id="horse1" class="horse" src="https://static.wikia.nocookie.net/characterprofile/images/2/25/Applejack_vector.png/revision/latest?cb=20160105164116" alt="Horse 1" style="left: 0;">
+    <div class="finish-line"></div>
+  </div>
+  
+  <div class="track">
+    <span class="position-absolute" style="left: 10px;">Player 2</span>
+    <img id="horse2" class="horse" src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/i/306e00ca-c2d1-45c3-b346-8f6cbd5e3be6/d7qxal2-7ef0aed7-c45e-45e4-83ab-8dc1d17fc0a4.png" alt="Horse 2" style="left: 0;">
+    <div class="finish-line"></div>
+  </div>
+
+  <button id="restart-button" class="btn btn-danger mt-3">Restart</button>
+</div>
+
+<div id="winner-modal" class="modal">
+  <h3 id="winner-text"></h3>
+  <button id="close-modal" class="btn btn-secondary">Close</button>
+</div>
+<div class="backdrop" id="modal-backdrop"></div>
+
+<script src="script.js"></script>
+</body>
+</html>

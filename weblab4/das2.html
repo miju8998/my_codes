@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dasgal 2</title>
+    <link href="C:\Users\97699\.vscode\bootstrap.css" rel="stylesheet">
+    <style>
+        body {
+            color: white;
+        }
+
+        .table {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            height: 150px;
+            margin: 5px;
+            border-radius: 10px;
+        }
+
+        .green { background-color: rgb(59, 207, 59); }
+        .blue { background-color: rgb(96, 151, 255); }
+        .red { background-color: red; }
+        .grey { background-color: rgb(214, 214, 214); }
+
+        /* Mobile Layout (≤500px) */
+        @media (max-width: 500px) {
+            .row {
+                display: flex;
+                flex-wrap: wrap;
+            }
+
+            /* Row 1: 2 nogoon (50%) */
+            .row:nth-child(1) .col-custom:nth-child(1) {
+                width: 50%;
+            }
+
+            .row:nth-child(1) .col-custom:nth-child(2) {
+                width: 50%;
+            }
+
+            /* Row 2: tsenher (100%) */
+            .row:nth-child(2) .col-custom {
+                width: 100%;
+            }
+
+            /* Row 3: ulaan (100%) */
+            .row:nth-child(3) .col-custom {
+                width: 100%;
+            }
+
+            /* Row 4: ulaan, saaral (50,50%) */
+            .row:nth-child(2) .col-custom:nth-child(2) {
+                width: 50%;
+            }
+            .row:nth-child(3) .col-custom {
+                width: 50%;
+                margin-left: 50%;
+                margin-top: -32%;
+            }
+        }
+
+        /* Desktop Layout (>500px) */
+        @media (min-width: 501px) {
+            .row {
+                display: flex;
+                flex-wrap: wrap;
+            }
+
+            /* Row 1: 2 nogoon, tsenher */
+            .row:nth-child(1) .col-custom:nth-child(1) {
+                width: 25%;
+            }
+
+            .row:nth-child(1) .col-custom:nth-child(2) {
+                width: 25%;
+            }
+
+            .row:nth-child(1) .col-custom:nth-child(3) {
+                width: 50%;
+            }
+
+            /* Row 2: 2 ulaan (50% each) */
+            .row:nth-child(2) .col-custom {
+                width: 50%;
+            }
+
+            /* Row 3: saaral (100%) */
+            .row:nth-child(3) .col-custom {
+                width: 100%;
+            }
+
+            /* Row 4: hooson */
+            .row:nth-child(4) .col-custom {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container-fluid">
+        <!-- Row 1: nogoon, tsenher -->
+        <div class="row">
+            <div class="col-custom col-6 col-md-3">
+                <div class="table green">1</div>
+            </div>
+            <div class="col-custom col-6 col-md-3">
+                <div class="table green">2</div>
+            </div>
+            <div class="col-custom col-12 col-md-6">
+                <div class="table blue">3</div>
+            </div>
+        </div>
+
+        <!-- Row 2: 2 ulaan -->
+        <div class="row">
+            <div class="col-custom col-6 col-md-6">
+                <div class="table red">4</div>
+            </div>
+            <div class="col-custom col-6 col-md-6">
+                <div class="table red">5</div>
+            </div>
+        </div>
+
+        <!-- Row 3: saaral -->
+        <div class="row">
+            <div class="col-custom col-6 col-lg-12">
+                <div class="table grey">6</div>
+            </div>
+        </div>
+
+        <!-- Row 4: desktop iin hooson -->
+        <div class="row">
+            <div class="col-custom col-12"></div>
+                <div class="table">7</div>
+            </div>
+            <!-- desktop deer hooson baih mur (width > 500px) -->
+        </div>
+    </div>
+
+    <script src="C:\Users\97699\.vscode\bootstrap.js"></script>
+
+</body>
+</html>

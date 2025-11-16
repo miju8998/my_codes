@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Хэрэглэгчийн бүртгэл</title>
+  <link rel="stylesheet" href="C:\Users\97699\.vscode\bootstrap.css">
+</head>
+<body class="p-4">
+  <div class="container-fluid">
+    <h2 class="text-center mb-4">Хэрэглэгчийн бүртгэл</h2>
+    <div class="row">
+      
+      <!-- Burtgeliin form -->
+      <div class="col-md-4">
+        <div style="height: 50%" class="mb-3">
+          <input style="height: 100%" type="text" id="surname" class="form-control" placeholder="Овог . . .">
+        </div>
+        <div style="height: 50%" class="mb-3">
+          <input style="height: 100%" type="text" id="name" class="form-control" placeholder="Нэр . . .">
+        </div>
+        <div style="height: 50%" class="mb-3">
+          <input style="height: 100%" type="number" id="age" class="form-control" placeholder="Нас . . .">
+        </div>
+        <button style="height: 50%" id="register" class="btn btn-info w-100">Бүртгэх</button>
+      </div>
+      
+      <!-- Table -->
+      <div class="col-md-8">
+        <table class="table table-bordered text-center" id="userTable">
+          <!-- Table head -->
+          <thead class="table-light">
+            <tr>
+              <th>№</th>
+              <th>Овог</th> 
+              <th>Нэр</th>
+              <th>Нас</th>
+              <th>Үйлдэл</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Hereglegchiin medeelel nemegdeh heseg -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    let userCount = 0; // Hereglegchiin toog hadgalah huvisagch
+
+    // Burtgeh tovch daragdahad ajillah uildel
+    document.getElementById("register").addEventListener("click", function () {
+      const surname = document.getElementById("surname").value.trim(); // Ovgiin utga
+      const name = document.getElementById("name").value.trim(); // Neriin utga
+      const age = document.getElementById("age").value.trim(); // Nasnii utga
+
+      if (surname && name && age) { // Buh talbar buglugdsun esehiig shalgah
+        userCount++;
+        const tableBody = document.querySelector("#userTable tbody"); // Table body-g songoh
+
+        // Hereglegchiin mur uusgeh
+        const row = document.createElement("tr");
+        row.innerHTML = `
+          <td>${userCount}</td>
+          <td>${surname}</td>
+          <td>${name}</td>
+          <td>${age}</td>
+          <td><button class="btn btn-danger btn-sm delete-btn">X</button></td>
+        `;
+
+        tableBody.appendChild(row); // Tabled mur nemeh
+
+        // Ustgah tovch daragdahad ajillah uildel
+        row.querySelector(".delete-btn").addEventListener("click", function () {
+          tableBody.removeChild(row); // Hereglegchiin muriig ustgah 
+          userCount--;
+          updateRowNumbers(); // Muriin dugaariig shinechleh
+        });
+
+        // Oruulsan utguudiig arilgah
+        document.getElementById("surname").value = "";
+        document.getElementById("name").value = "";
+        document.getElementById("age").value = "";
+      } else {
+        alert("Бүх талбарыг бөглөнө үү.");
+      }
+    });
+
+    // Husnegtiin muriin dugaariig shinechleh function
+    function updateRowNumbers() {
+      const rows = document.querySelectorAll("#userTable tbody tr");
+      rows.forEach((row, index) => {
+        row.cells[0].innerText = index + 1; // Mur buriin ehnii nudend shine dugaar uguh
+      });
+    }
+  </script>
+
+  <script src="C:\Users\97699\.vscode\bootstrap.js"></script>
+</body>
+</html>
